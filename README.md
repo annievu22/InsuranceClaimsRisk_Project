@@ -10,9 +10,9 @@
 
 ## 1. Overview
 
-This project investigates 10,000 synthetic insurance policyholder records to understand claim patterns, premium adjustments, and demographic factors contributing to risk. Using Python for data transformation and modeling, and Power BI for visual storytelling, the project surfaces actionable insights in claim frequency and severity across regions and profiles.
+This project explores insurance claims and policyholder data using Python and Power BI to identify risk patterns, customer segmentation opportunities, and policy characteristics driving claim severity. It supports strategic improvements in underwriting, pricing, and fraud detection.
 
-The workflow includes data cleaning, feature engineering, exploratory analysis, machine learning modeling, and the creation of an interactive dashboard to support strategic underwriting and pricing decisions.
+Python was used to perform EDA, correlation analysis, and clustering based on customer profiles and claim history. The insights were presented in Power BI through interactive visuals to support actuarial and business decisions.
 
 ---
 
