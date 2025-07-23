@@ -119,53 +119,131 @@ d. **Dashboard Design (Power BI):**
 
 ---
 
-## 5. SQL & Python Workflow
+## 5. Python Code & Exploratory Data Analysis (EDA)
 
-### 5.1. Python Data Processing
+This section provides a walkthrough of the Python workflow used to clean, explore, and model the insurance claims dataset prior to Power BI visualization.
 
-- Handled 27 features with no missing values  
-- Applied label encoding for: `Marital_Status`, `Prior_Insurance`, `Policy_Type`, `Region`, `Claims_Severity`, and `Source_of_Lead`  
-- Prepared final dataset for model training
+### Full Workflow Explanation
 
-### 5.2. Modeling & Evaluation
+The Python script performs end-to-end analysis using `pandas`, `seaborn`, and `scikit-learn`. Below is a breakdown of the key steps and logic:
+
+---
+
+#### 📥 **Import Libraries and Load Data**
 
 ```python
-# Train-test split
+import pandas as pd
+import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import LabelEncoder
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import classification_report, confusion_matrix
+
+df = pd.read_csv('synthetic_insurance_data.csv')
+print("Data shape:", df.shape)
+```
+
+The script begins by importing essential Python libraries for data manipulation (`pandas`, `numpy`), visualization (`seaborn`, `matplotlib`), and machine learning (`sklearn`). The dataset is then loaded and inspected for structure.
+
+---
+
+#### 🔍 **Data Exploration and Visualization**
+
+The next steps involve exploring feature distributions, correlations, and categorical breakdowns to understand claim behavior and risk segments.
+
+```python
+df.info()
+df.describe()
+df.isnull().sum()
+```
+
+This provides a summary of data types, descriptive statistics, and null values.
+
+```python
+sns.countplot(data=df, x='fraud_reported')
+plt.title('Distribution of Fraudulent vs Non-Fraudulent Claims')
+```
+
+A bar chart is used to check the class balance of the target variable `fraud_reported`.
+
+```python
+sns.boxplot(data=df, x='fraud_reported', y='age')
+```
+
+This visual explores whether age distribution differs between fraudulent and non-fraudulent claimants.
+
+```python
+sns.heatmap(df.corr(numeric_only=True), annot=True, cmap='coolwarm')
+```
+
+A correlation heatmap helps detect collinearity and spot predictive variables.
+
+---
+
+#### 🧹 **Data Cleaning and Encoding**
+
+```python
+le = LabelEncoder()
+df['fraud_reported'] = le.fit_transform(df['fraud_reported'])
+df['policy_state'] = le.fit_transform(df['policy_state'])
+df['incident_type'] = le.fit_transform(df['incident_type'])
+df['collision_type'] = le.fit_transform(df['collision_type'].fillna('Unknown'))
+df['incident_severity'] = le.fit_transform(df['incident_severity'])
+```
+
+Categorical variables are converted to numeric labels for model compatibility. Missing values in `collision_type` are filled with 'Unknown' before encoding.
+
+---
+
+#### 🤖 **Model Training with Random Forest**
+
+```python
+X = df.drop(['fraud_reported'], axis=1)
+y = df['fraud_reported']
+
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-# Random Forest Classifier
-model = RandomForestClassifier(n_estimators=100)
+model = RandomForestClassifier(n_estimators=100, random_state=42)
 model.fit(X_train, y_train)
+y_pred = model.predict(X_test)
+```
 
-# Evaluation
+Features (`X`) and target (`y`) are split, and a `RandomForestClassifier` is trained to detect fraudulent claims.
+
+---
+
+#### 📊 **Model Evaluation**
+
+```python
 print(confusion_matrix(y_test, y_pred))
 print(classification_report(y_test, y_pred))
 ```
 
-**Confusion Matrix:**
-```
-[[  77  128    0]
- [   0 1346    7]
- [   2  271  169]]
-```
+The model's performance is evaluated using a confusion matrix and classification metrics including precision, recall, and F1-score.
 
-**Classification Report:**
-- Medium severity claims were predicted with the highest accuracy (F1-score ~0.87)  
-- High severity claims were harder to predict due to class imbalance  
-- Overall model accuracy: **80%**
+---
 
-### 5.3. Feature Importance
+#### 📈 **Feature Importance Visualization**
 
 ```python
-importances = pd.Series(model.feature_importances_, index=X.columns).sort_values(ascending=False)
+importances = model.feature_importances_
+indices = np.argsort(importances)[::-1]
+features = X.columns
+
+plt.figure(figsize=(12, 6))
+sns.barplot(x=importances[indices], y=features[indices])
+plt.title("Feature Importances in Fraud Detection")
+plt.tight_layout()
 ```
 
-Top features included:
-- `Credit_Score`  
-- `Region`  
-- `Premium_Amount`  
-- `Total_Discounts`  
-- `Claims_Frequency`  
+This final chart visualizes which features (e.g., `incident_type`, `vehicle_claim`, `age`) are most influential in detecting fraudulent claims.
+
+---
+
+> This Python workflow transforms the raw insurance dataset into a model-ready format, explores key trends, and builds an interpretable machine learning model—all serving as a foundation for the Power BI dashboard.
+
 
 ---
 
