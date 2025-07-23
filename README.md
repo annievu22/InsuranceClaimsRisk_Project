@@ -20,12 +20,7 @@ Python was used to perform EDA, correlation analysis, and clustering based on cu
 
 ### 2.1. Business Problem
 
-Insurance providers face the challenge of evaluating policyholder risk to reduce claim costs while improving customer retention. This project transforms raw policy data into insights that help insurance firms:
-
-- Identify factors influencing claim severity
-- Segment customers by region, age, and lead source
-- Optimize policy and premium structures
-- Predict and monitor high-risk profiles
+As insurance firms strive to balance risk management with customer satisfaction, understanding claim behavior and policyholder profiles becomes essential. This analysis transforms policy and claims data into insights that inform pricing strategies, risk segmentation, and fraud detection.
 
 > **Key questions** addressed in this analysis:
 > - How are claims distributed by severity level?
