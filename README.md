@@ -10,7 +10,7 @@
 
 ## 1. Overview
 
-This project investigates 10,000 synthetic insurance policyholder records to understand claim patterns, premium adjustments, and demographic factors contributing to risk. Using SQL and Python for data transformation and modeling, and Power BI for visual storytelling, the project surfaces actionable insights in claim frequency and severity across regions and profiles.
+This project investigates 10,000 synthetic insurance policyholder records to understand claim patterns, premium adjustments, and demographic factors contributing to risk. Using Python for data transformation and modeling, and Power BI for visual storytelling, the project surfaces actionable insights in claim frequency and severity across regions and profiles.
 
 The workflow includes data cleaning, feature engineering, exploratory analysis, machine learning modeling, and the creation of an interactive dashboard to support strategic underwriting and pricing decisions.
 
