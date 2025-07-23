@@ -1,6 +1,6 @@
 # 🛡️ Insurance Claims & Policyholders Risk Analysis Project
 ![Language](https://img.shields.io/badge/Language-Python-purple)
-![Power BI](https://img.shields.io/badge/Visualization-PowerBI-purple)
+![Power BI](https://img.shields.io/badge/Visualization-PowerBI-yellow)
 ![Status](https://img.shields.io/badge/Project-Completed-brightgreen)
 ![Data](https://img.shields.io/badge/Data-Insurance-informational)
 
