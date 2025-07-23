@@ -268,7 +268,7 @@ This final chart visualizes which features (e.g., `incident_type`, `vehicle_clai
 - **Policy and Lead Source Filters:**  
   Allows users to slice by Policy Type, Region, and Source of Lead
 
-> The dashboard is fully interactive, helping stakeholders understand how demographic and behavioral factors influence risk.
+The dashboard is fully interactive, helping stakeholders understand how demographic and behavioral factors influence risk.
 
 ---
 
@@ -288,5 +288,5 @@ This project transforms synthetic insurance data into meaningful insights using 
 - Integrate external data (accident history, vehicle type) for broader context  
 - Deploy Power BI dashboard with real-time data using Power Query or API sources
 
-> This end-to-end project demonstrates practical experience with data science, machine learning, and dashboard storytelling in the insurance industry.
+This end-to-end project demonstrates practical experience with data science, machine learning, and dashboard storytelling in the insurance industry.
 
