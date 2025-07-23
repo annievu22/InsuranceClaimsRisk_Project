@@ -29,16 +29,7 @@ As insurance firms strive to balance risk management with customer satisfaction,
 > - How do policy types, marital status, and lead source impact claim patterns?
 > - Which features are most predictive of claim severity?
 
-### 2.2. Goal of the Dashboard
-
-To build a visual dashboard that:
-
-- Summarizes total claims and average adjustment amounts  
-- Explores claim severity by region, age, and policy type  
-- Displays relationships between premium and claim behavior  
-- Provides filters for detailed analysis by region, policy, or lead source
-
-### 2.3. Business Impact & Insights
+### 2.2. Business Impact & Insights
 
 - Over **70% of claims** were low severity, suggesting better policy targeting for low-risk users  
 - **Urban regions** reported more claims than rural or suburban, indicating regional risk concentration  
@@ -239,6 +230,8 @@ This final chart visualizes which features (e.g., `incident_type`, `vehicle_clai
 ---
 
 ## 6. Power BI Dashboard
+
+- This Power BI dashboard visualizes key policyholder segments, claim severity trends, and risk factors to support better underwriting and pricing strategies.
 
 🔗 [View Dashboard Snapshot](https://github.com/annievu22/InsuranceClaimsRisk_Project/blob/main/Insurance%20Project%20-%20PowerBI%20Snapshot.png)
 
