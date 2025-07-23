@@ -123,7 +123,6 @@ d. **Dashboard Design (Power BI):**
 
 This section provides a walkthrough of the Python workflow used to clean, explore, and model the insurance claims dataset prior to Power BI visualization.
 
-### Full Workflow Explanation
 
 The Python script performs end-to-end analysis using `pandas`, `seaborn`, and `scikit-learn`. Below is a breakdown of the key steps and logic:
 
