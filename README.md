@@ -4,7 +4,7 @@
 ![Status](https://img.shields.io/badge/Project-Completed-brightgreen)
 ![Data](https://img.shields.io/badge/Data-Insurance-red)
 
-> A full-scope analysis of insurance claims and policyholders using SQL, Python, and Power BI to uncover patterns in claim severity, policy types, and customer profiles. Results inform better risk assessment, customer segmentation, and pricing strategy.
+> A Python and Power BI analysis of insurance claims, uncovering key risk indicators, policyholder behavior, and claim severity patterns, to inform better risk assessment, customer segmentation, and pricing strategy.
 
 ---
 
