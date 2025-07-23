@@ -31,25 +31,25 @@ As insurance firms strive to balance risk management with customer satisfaction,
 
 ### 2.2. Business Impact & Insights
 
-- Over **70% of claims** were low severity, suggesting better policy targeting for low-risk users  
-- **Urban regions** reported more claims than rural or suburban, indicating regional risk concentration  
-- Younger age groups (20s–40s) had higher claims volume, while older groups had lower counts  
-- High claim severity correlated with **higher premium amounts and fewer discounts**  
-- Referral-based leads showed **higher severity** compared to agent or online leads  
-- Feature importance analysis supported enhanced risk modeling using attributes like region, credit score, and discounts
+- Over 70% of claims were low severity, suggesting better policy targeting for low-risk users.  
+- Urban regions reported more claims than rural or suburban, indicating regional risk concentration.  
+- Younger age groups (20s–40s) had higher claims volume, while older groups had lower counts. 
+- High claim severity correlated with higher premium amounts and fewer discounts. 
+- Referral-based leads showed higher severity compared to agent or online leads.  
+- Feature importance analysis supported enhanced risk modeling using attributes like region, credit score, and discounts.
 
 ---
 
 ## 3. Data Sources & Schema
 
-The dataset contains 10,000 anonymized insurance policyholder records with demographics, premium info, and claim-related fields.
+The dataset contains 10,000 anonymized insurance policyholder records with demographic information, policy details, and claim history. It was used in Python and Power BI for risk segmentation and claims analysis.
 
 ### 🔗 Dataset Links
 
-- **Google Drive Download**  
+- **Google Drive Download:**  
   [📁 View Dataset (Google Drive)](https://drive.google.com/file/d/10yhmiB2mqB6itAeOMkXORS78DeG603m2/view?usp=sharing)
 
-### 📋 Table: `synthetic_insurance_data.csv`
+### 📝 Table: `synthetic_insurance_data.csv`
 
 | Column Name                         | Description                                            |
 |-------------------------------------|--------------------------------------------------------|
@@ -69,11 +69,8 @@ The dataset contains 10,000 anonymized insurance policyholder records with demog
 
 ## 4. Tech Stack & Methodology
 
-This project combines statistical programming with business visualization to extract meaningful insights.
-
 ### 4.1. Tech Stack
 
-- **SQL (MySQL):** Used for filtering, aggregation, and summary statistics  
 - **Python (Pandas, Seaborn, Scikit-learn):** Used for EDA, modeling, and visualizations  
 - **Power BI:** Designed the final dashboard with interactive filters and charts
 
