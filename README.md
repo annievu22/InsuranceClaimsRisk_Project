@@ -63,9 +63,6 @@ The dataset contains 10,000 anonymized insurance policyholder records with demog
 - **Google Drive Download**  
   [📁 View Dataset (Google Drive)](https://drive.google.com/file/d/10yhmiB2mqB6itAeOMkXORS78DeG603m2/view?usp=sharing)
 
-- **Dashboard Snapshot**  
-  ![View Snapshot](https://github.com/annievu22/InsuranceClaimsRisk_Project/blob/main/Insurance%20Project%20-%20PowerBI%20Snapshot.png)
-
 ### 📋 Table: `synthetic_insurance_data.csv`
 
 | Column Name                         | Description                                            |
