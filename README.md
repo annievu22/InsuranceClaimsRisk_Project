@@ -67,101 +67,20 @@ The dataset contains 10,000 anonymized insurance policyholder records with demog
 
 ---
 
-## 4. Tech Stack & Methodology
+## 4. Methodology & Python Analysis
 
-### 4.1. Tech Stack
+This section outlines the full pipeline of data cleaning, exploratory analysis, model training, and dashboard creation for a synthetic insurance claims dataset using Python and Power BI.
 
-- **Python (Pandas, Seaborn, Scikit-learn):** Used for EDA, modeling, and visualizations  
-- **Power BI:** Designed the final dashboard with interactive filters and charts
+### 4.1. Data Cleaning
 
-### 4.2. Methodology
-
-a. **Data Cleaning:**
-- Verified null values (none found)
-- Checked types and transformed columns (e.g. label encoding for categorical variables)
-
-b. **Exploratory Data Analysis:**
-- Visualized claim severity distribution
-- Boxplot of premium by severity
-- Age histogram by severity level
-- Binned age data and segmented by region
-
-c. **Feature Engineering & Modeling:**
-- Label-encoded key categorical columns
-- Split data into train-test (80/20)
-- Trained a **Random Forest Classifier** to predict `Claims_Severity`
-- Evaluated using classification report and confusion matrix
-
-d. **Dashboard Design (Power BI):**
-- Showcased KPIs such as total claims, avg. claim, total adjustments
-- Created bar charts, pie charts, histograms, and scatter plots
-- Added region, policy type, and lead source filters for interactivity
-
----
-
-## 5. Python Code & Exploratory Data Analysis (EDA)
-
-This section provides a walkthrough of the Python workflow used to clean, explore, and model the insurance claims dataset prior to Power BI visualization.
-
-
-The Python script performs end-to-end analysis using `pandas`, `seaborn`, and `scikit-learn`. Below is a breakdown of the key steps and logic:
-
----
-
-#### 📥 **Import Libraries and Load Data**
-
-```python
-import pandas as pd
-import numpy as np
-import seaborn as sns
-import matplotlib.pyplot as plt
-from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import LabelEncoder
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import classification_report, confusion_matrix
-
-df = pd.read_csv('synthetic_insurance_data.csv')
-print("Data shape:", df.shape)
-```
-
-The script begins by importing essential Python libraries for data manipulation (`pandas`, `numpy`), visualization (`seaborn`, `matplotlib`), and machine learning (`sklearn`). The dataset is then loaded and inspected for structure.
-
----
-
-#### 🔍 **Data Exploration and Visualization**
-
-The next steps involve exploring feature distributions, correlations, and categorical breakdowns to understand claim behavior and risk segments.
+* **Verified null values and data types** → Ensured dataset integrity before modeling.
 
 ```python
 df.info()
-df.describe()
 df.isnull().sum()
 ```
 
-This provides a summary of data types, descriptive statistics, and null values.
-
-```python
-sns.countplot(data=df, x='fraud_reported')
-plt.title('Distribution of Fraudulent vs Non-Fraudulent Claims')
-```
-
-A bar chart is used to check the class balance of the target variable `fraud_reported`.
-
-```python
-sns.boxplot(data=df, x='fraud_reported', y='age')
-```
-
-This visual explores whether age distribution differs between fraudulent and non-fraudulent claimants.
-
-```python
-sns.heatmap(df.corr(numeric_only=True), annot=True, cmap='coolwarm')
-```
-
-A correlation heatmap helps detect collinearity and spot predictive variables.
-
----
-
-#### 🧹 **Data Cleaning and Encoding**
+* **Label-encoded categorical features** → Converted string variables into numerical format.
 
 ```python
 le = LabelEncoder()
@@ -172,39 +91,52 @@ df['collision_type'] = le.fit_transform(df['collision_type'].fillna('Unknown'))
 df['incident_severity'] = le.fit_transform(df['incident_severity'])
 ```
 
-Categorical variables are converted to numeric labels for model compatibility. Missing values in `collision_type` are filled with 'Unknown' before encoding.
+> These steps enabled compatibility with machine learning models and ensured consistent formatting across features.
 
----
+### 4.2. Exploratory Data Analysis (EDA)
 
-#### 🤖 **Model Training with Random Forest**
+* **Class distribution visualization** → Checked balance between fraudulent and non-fraudulent claims.
+
+```python
+sns.countplot(data=df, x='fraud_reported')
+plt.title('Distribution of Fraudulent vs Non-Fraudulent Claims')
+```
+
+* **Age distribution by fraud status** → Investigated demographic patterns in fraud cases.
+
+```python
+sns.boxplot(data=df, x='fraud_reported', y='age')
+```
+
+* **Correlation heatmap** → Identified linear relationships between numeric variables.
+
+```python
+sns.heatmap(df.corr(numeric_only=True), annot=True, cmap='coolwarm')
+```
+
+> These visuals helped uncover patterns in risk behavior and informed feature selection.
+
+### 4.3. Fraud Detection Modeling
+
+* **Train-test split and model fitting** → Applied Random Forest to classify fraudulent claims.
 
 ```python
 X = df.drop(['fraud_reported'], axis=1)
 y = df['fraud_reported']
-
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-
 model = RandomForestClassifier(n_estimators=100, random_state=42)
 model.fit(X_train, y_train)
 y_pred = model.predict(X_test)
 ```
 
-Features (`X`) and target (`y`) are split, and a `RandomForestClassifier` is trained to detect fraudulent claims.
-
----
-
-#### 📊 **Model Evaluation**
+* **Model evaluation** → Assessed accuracy using classification report and confusion matrix.
 
 ```python
 print(confusion_matrix(y_test, y_pred))
 print(classification_report(y_test, y_pred))
 ```
 
-The model's performance is evaluated using a confusion matrix and classification metrics including precision, recall, and F1-score.
-
----
-
-#### 📈 **Feature Importance Visualization**
+* **Feature importance chart** → Highlighted variables most predictive of fraud.
 
 ```python
 importances = model.feature_importances_
@@ -216,17 +148,9 @@ sns.barplot(x=importances[indices], y=features[indices])
 plt.title("Feature Importances in Fraud Detection")
 plt.tight_layout()
 ```
+> The Random Forest model provided interpretable insights and a strong foundation for dashboard KPIs.
 
-This final chart visualizes which features (e.g., `incident_type`, `vehicle_claim`, `age`) are most influential in detecting fraudulent claims.
-
----
-
-> This Python workflow transforms the raw insurance dataset into a model-ready format, explores key trends, and builds an interpretable machine learning model—all serving as a foundation for the Power BI dashboard.
-
-
----
-
-## 6. Power BI Dashboard
+### 4.4. Power BI Dashboard Design
 
 - This Power BI dashboard visualizes key policyholder segments, claim severity trends, and risk factors to support better underwriting and pricing strategies.
 
@@ -238,40 +162,40 @@ This final chart visualizes which features (e.g., `incident_type`, `vehicle_clai
 
 ### Walkthrough of Key Visuals:
 
-- **Top KPIs (Cards):**  
+* **Top KPIs (Cards):**  
   Total Claims, Avg. Claim, Total Adjustments, and Average Claim Amount
 
-- **Claim Severity by Region (Donut + Area Chart):**  
+* **Claim Severity by Region (Donut + Area Chart):**  
   Compares count and severity of claims across Urban, Suburban, and Rural regions
 
-- **Claim Severity by Age (Stacked Column Chart):**  
+* **Claim Severity by Age (Stacked Column Chart):**  
   Segments claim patterns by age bins and severity level
 
-- **Claim Frequency vs. Premium (Scatter Plot):**  
+* **Claim Frequency vs. Premium (Scatter Plot):**  
   Visualizes premium trends with frequency of claims, with a trendline
 
-- **Policy and Lead Source Filters:**  
+* **Policy and Lead Source Filters:**  
   Allows users to slice by Policy Type, Region, and Source of Lead
 
 The dashboard is fully interactive, helping stakeholders understand how demographic and behavioral factors influence risk.
 
 ---
 
-## 7. Final Conclusion
+## 5. Final Conclusion
 
-This project transforms synthetic insurance data into meaningful insights using structured analysis, modeling, and visualization. From premium behavior to claim trends, it enables insurers to design better policies, improve risk assessment, and enhance profitability.
+This project transforms synthetic insurance data into actionable business insights through structured data analysis, machine learning, and interactive dashboarding. By examining claim severity, customer demographics, and policy attributes, it supports smarter underwriting, fraud detection, and customer segmentation.
 
 **Key business insights:**
-- Low-severity claims dominate, but high-severity claims incur large adjustments  
-- Urban areas and younger policyholders tend to have higher claim frequencies  
-- Lead source and marital status can signal different risk levels  
-- Machine learning models can help proactively flag high-risk customers
 
-### Future Enhancements:
+* Most claims are low-severity, but high-severity claims drive significant adjustment costs
+* Younger policyholders and urban regions exhibit higher claim frequency
+* Lead source and marital status correlate with varying levels of risk exposure
+* A Random Forest model helps flag high-risk customers for proactive intervention
 
-- Balance class distribution using SMOTE for better model generalization  
-- Integrate external data (accident history, vehicle type) for broader context  
-- Deploy Power BI dashboard with real-time data using Power Query or API sources
+**Future enhancement:**
 
-This end-to-end project demonstrates practical experience with data science, machine learning, and dashboard storytelling in the insurance industry.
+* Applying SMOTE or similar techniques to balance class distribution for fraud prediction
+* Enriching the dataset with external variables like driving history or vehicle details
+* Automating data refresh and interactivity using Power Query and live API connections
 
+Overall, this project showcases hands-on experience with insurance analytics, predictive modeling, and business-focused storytelling using Python and Power BI.
