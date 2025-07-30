@@ -154,7 +154,7 @@ plt.tight_layout()
 
 - This Power BI dashboard visualizes key policyholder segments, claim severity trends, and risk factors to support better underwriting and pricing strategies.
 
-🔗 [View Full Dashboard on Power BI]([https://project.novypro.com/HZ7pso])
+🔗 [View Full Dashboard on Power BI](https://project.novypro.com/HZ7pso)
 
 ### Dashboard Snapshot:
 
