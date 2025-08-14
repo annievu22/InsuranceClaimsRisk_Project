@@ -162,6 +162,8 @@ plt.tight_layout()
 
 ![Power BI Dashboard](https://github.com/annievu22/InsuranceClaimsRisk_Project/blob/main/Insurance%20Project%20-%20PowerBI%20Snapshot.png)
 
+---
+
 ### Walkthrough of Key Visuals:
 
 * **Top KPIs (Cards):**  
