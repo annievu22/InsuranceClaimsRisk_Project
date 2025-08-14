@@ -150,7 +150,9 @@ plt.tight_layout()
 ```
 > The Random Forest model provided interpretable insights and a strong foundation for dashboard KPIs.
 
-### 4.4. Power BI Dashboard Design
+---
+
+## 5. Power BI Dashboard Design
 
 - This Power BI dashboard visualizes key policyholder segments, claim severity trends, and risk factors to support better underwriting and pricing strategies.
 
@@ -181,7 +183,7 @@ The dashboard is fully interactive, helping stakeholders understand how demograp
 
 ---
 
-## 5. Final Conclusion
+## 6. Final Conclusion
 
 This project transforms synthetic insurance data into actionable business insights through structured data analysis, machine learning, and interactive dashboarding. By examining claim severity, customer demographics, and policy attributes, it supports smarter underwriting, fraud detection, and customer segmentation.
 
